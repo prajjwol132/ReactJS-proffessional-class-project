@@ -1,33 +1,39 @@
-import React from 'react'
-import { IoIosCall } from "react-icons/io";
-import { CgMail } from "react-icons/cg";
-import { FaSquareFacebook } from "react-icons/fa6";
-import { TbBrandInstagram } from "react-icons/tb";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Navbar from './Component/Navbar';
+import Footer from './Component/Footer';
+import Home from './pages/Home';
+import Rooms from './pages/Rooms';
+import Amenities from './pages/Amenities';
+import Contact from './pages/Contact';
+import Login from './pages/Login';
+import Booking from './pages/Booking';
+import BookingHistory from './pages/BookingHistory';
+import Dashboard from './pages/Dashboard';
 
-const App = () => {
+function App() {
   return (
-    <><header className="App-header h-17 bg-[#1a202e] flex items-center flex-1 fixed top-0 w-full">
-      <div className='flex items-center'>
-        <IoIosCall className="text-[#ffffff] text-2xl ml-15" /><p className='text-[#ffffff] text-1xl inline ml-0'>9745614586</p>
-        <CgMail className="text-[#ffffff] text-2xl ml-4" /><p className='text-[#ffffff] text-1xl inline ml-0'>bhandariprajjwol094@gmail.com</p>
+    <Router>
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/rooms" element={<Rooms />} />
+            <Route path="/amenities" element={<Amenities />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/booking-history" element={<BookingHistory />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <div className='flex items-center w-full justify-end mr-15'>
-        <button><FaSquareFacebook className="text-[#ffffff] text-2xl ml-3 hover:opacity-50" /></button>
-        <button><TbBrandInstagram className="text-[#ffffff] text-2xl ml-3 hover:opacity-50" /></button>
-        <button><FaSquareXTwitter className="text-[#ffffff] text-2xl ml-3 hover:opacity-50" /></button>
-        <button className='bg-[#ffffff] text-[#1a202e] font-bold ml-3 px-4 py-2 rounded-3xl hover:opacity-50 cursor-pointer'>Login</button>
-        <button className='bg-[#ffffff] text-[#1a202e] font-bold ml-3 px-4 py-2 rounded-3xl hover:opacity-50 cursor-pointer'>Sign up</button>
-      </div>
-    </header>
-    <nav>
-      <div>
-        
-      </div>
-    </nav>
-    </>
-
-  )
+    </Router>
+  );
 }
 
 export default App;
